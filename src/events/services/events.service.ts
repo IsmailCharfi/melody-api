@@ -7,6 +7,7 @@ import { User } from 'src/auth/entities/user.entity';
 import { ErrorMessages } from 'src/misc/error-message.enum';
 import { format } from 'date-fns';
 import { DateTimeFormat } from 'src/misc/date-time-format.enum';
+import { EventCreationDto } from '../dto/event-creation.dto';
 
 @Injectable()
 export class EventsService {
@@ -44,24 +45,7 @@ export class EventsService {
     return this.eventsRepository.findOneBy({ id });
   }
 
-  async createTicket(event: Event, user: User): Promise<Ticket> {
-    if (!event.capacity) {
-      throw new HttpException(
-        ErrorMessages.UNAUTHORIZED,
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
-
-    let ticket = new Ticket();
-
-    ticket.gate = 'center';
-    ticket.seat = Math.floor(Math.random() * 10).toLocaleString();
-    ticket.event = event;
-    ticket.user = user;
-
-    event.capacity--;
-    await this.eventsRepository.save(event);
-
-    return this.ticketRepository.save(ticket);
+  async createEvent(data: EventCreationDto): Promise<Event> {
+    return this.eventsRepository.save(data);
   }
 }

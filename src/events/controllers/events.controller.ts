@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   HttpException,
@@ -15,10 +16,15 @@ import { ErrorMessages } from 'src/misc/error-message.enum';
 import { User } from 'src/auth/entities/user.entity';
 import { GetUser } from 'src/auth/decorators/get-user.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+import { EventCreationDto } from '../dto/event-creation.dto';
+import { TicketService } from '../services/ticket.service';
 
 @Controller('events')
 export class EventsController extends AbstractController {
-  constructor(private readonly eventsService: EventsService) {
+  constructor(
+    private readonly eventsService: EventsService,
+    private readonly ticketService: TicketService
+    ) {
     super();
   }
 
@@ -27,6 +33,13 @@ export class EventsController extends AbstractController {
     const events = await this.eventsService.getEventsFromToday(user);
 
     return this.renderSuccessResponse(events);
+  }
+
+
+  @Post()
+  async createEvent(@Body() body: EventCreationDto): Promise<HttpResponse<Event>>
+  {
+    return this.renderSuccessResponse(await this.eventsService.createEvent(body));
   }
 
   @Post('/:id/book')
@@ -41,7 +54,7 @@ export class EventsController extends AbstractController {
       throw new HttpException(ErrorMessages.NOT_FOUND, HttpStatus.NOT_FOUND);
     }
 
-    const ticket = await this.eventsService.createTicket(event, user);
+    const ticket = await this.ticketService.createTicket(event, user);
 
     return this.renderCreatedResponse(ticket);
   }

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Ticket } from '../entities/ticket.entity';
 import { Repository } from 'typeorm';
@@ -13,6 +13,8 @@ import { DateTimeFormat } from 'src/misc/date-time-format.enum';
 import * as ejs from 'ejs';
 import * as qrcode from 'qrcode';
 import puppeteer from 'puppeteer';
+import { Event } from '../entities/event.entity';
+import { ErrorMessages } from 'src/misc/error-message.enum';
 
 @Injectable()
 export class TicketService {
@@ -27,6 +29,8 @@ export class TicketService {
   constructor(
     @InjectRepository(Ticket)
     private ticketRepository: Repository<Ticket>,
+    @InjectRepository(Event)
+    private eventRepository: Repository<Event>,
   ) {}
 
   async getTicketById(id: number): Promise<Ticket> {
@@ -46,6 +50,27 @@ export class TicketService {
         id: user.id,
       },
     });
+  }
+
+  async createTicket(event: Event, user: User): Promise<Ticket> {
+    if (!event.capacity) {
+      throw new HttpException(
+        ErrorMessages.UNAUTHORIZED,
+        HttpStatus.UNAUTHORIZED,
+      );
+    }
+
+    let ticket = new Ticket();
+
+    ticket.gate = 'center';
+    ticket.seat = Math.floor(Math.random() * 10).toLocaleString();
+    ticket.event = event;
+    ticket.user = user;
+
+    event.capacity--;
+    await this.eventRepository.save(event);
+
+    return this.ticketRepository.save(ticket);
   }
 
   async generateGoogleTicket(ticket: Ticket): Promise<string> {
