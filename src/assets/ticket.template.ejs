@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        display: -ms-flexbox;
+        display: flex;
+        color: rgb(24, 24, 24);
+        text-shadow: none;
+      }
+
+      .wrap {
+        height: 100%;
+        width: 100%;
+        box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+        overflow: auto;
+        position: relative;
+      }
+
+      .cover-container {
+        max-width: 27rem;
+        padding: 16px 0;
+        background-color: #8ed1fc;
+      }
+
+      .masthead {
+        margin-bottom: 2rem;
+      }
+
+      .masthead-title {
+        margin-bottom: 0.5rem;
+      }
+
+      @media (min-width: 48em) {
+        .masthead-title {
+          float: left;
+        }
+        .nav-masthead {
+          float: right;
+        }
+        .dropdown {
+          top: 1.25em !important;
+        }
+      }
+
+      .cover {
+        padding: 20px 0;
+      }
+
+      .row {
+        padding: 0;
+        margin: 0;
+      }
+
+      .preview {
+        padding: 0px;
+      }
+
+
+      .preview.apple-wallet .inner {
+        position: relative;
+        padding: 0;
+      }
+
+      .preview .inner h1 {
+        margin: 0px;
+        font-weight: 300;
+      }
+      .preview .inner:after {
+        content: '';
+        z-index: 10;
+        display: block;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .no-padding {
+        padding: 0 !important;
+      }
+
+      .pass-info {
+        padding-top: 10px;
+      }
+
+      .preview .inner .pass-info p {
+        margin-bottom: 0;
+        font-size: 10pt;
+      }
+
+      .preview.apple-wallet .inner .pass-info p {
+        margin-bottom: 0px;
+        font-size: 10pt;
+      }
+
+      .preview .inner .pass-gpay-primary {
+        font-size: 18px;
+        padding: 0 10px 0 10px !important;
+        margin-bottom: 0;
+      }
+
+      .preview .inner .pass-gpay-secondary {
+        margin: 0 0 20px 0;
+      }
+
+      .preview.apple-wallet .inner .pass-logo {
+        height: 60px;
+        padding: 0 0 10px 15px;
+      }
+
+      .preview .pass-strip {
+        position: relative;
+      }
+
+      .preview.apple-wallet .inner .pass-strip img,
+      .preview.google-pay .inner .pass-strip img {
+        width: 100%;
+      }
+
+      .preview.apple-wallet .inner .pass-strip .pass-title {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .preview.apple-wallet .inner .pass-label {
+        font-weight: bold;
+      }
+
+      .preview.apple-wallet .inner .pass-value {
+      }
+
+      .preview .call-to-action span {
+        font-size: 12px;
+      }
+
+      .preview .primary-color {
+        color: #4195f1;
+      }
+
+      .preview .apple-wallet-instructions {
+        margin-top: 40px;
+      }
+
+      .preview .call-to-action {
+        margin-top: 5px;
+        text-align: center;
+      }
+
+      .google-pay {
+        display: none;
+      }
+
+      .qr-code {
+        width: 160px;
+        height: 160px;
+        background: #fff;
+        padding: 8px;
+        border-radius: 12px;
+        margin-top: 18px;
+      }
+
+      @media (prefers-color-scheme: light) {
+        body {
+          background-color: #fff;
+          color: #181818;
+          text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+        }
+        .nav-masthead .active {
+          color: #181818;
+          border-bottom-color: #181818;
+        }
+        .wrap {
+          box-shadow: none;
+        }
+
+        a,
+        a:focus,
+        a:hover {
+          color: #181818;
+        }
+        .qr-code {
+          padding: 1px;
+          border-radius: 0;
+        }
+        .mastfoot {
+          color: rgba(24, 24, 24, 0.5);
+          font-size: 10px;
+        }
+        .preview .inner:after {
+          background: none;
+        }
+
+        .pass {
+          box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        }
+        .power {
+          text-shadow: none;
+        }
+      }
+    </style>
+    <title>Melody Music Festival</title>
+  </head>
+
+  <body class="text-center">
+    <div class="wrap">
+      <div
+        id="ticket"
+        class="cover-container d-flex w-100 h-100 mx-auto flex-column"
+      >
+        <div class="preview apple-wallet">
+          <header class="masthead mb-auto">
+            <div class="container inner">
+              <div class="row no-padding align-items-center ">
+                <div
+                  class="col-lg-4 col-md-4 col-4 no-padding text-left"
+                
+                >
+                  <img class="pass-logo" src="<%= logo %>" alt="Logo" />
+                </div>
+                <div class="col-lg-8 col-md-8 col-8 text-right pass-info">
+                  <h4>Melody Music Festival</h4>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <main role="main" class="inner cover">
+            <div class="preview apple-wallet">
+              <div class="row no-padding">
+                <div class="col-lg-12 col-md-12 no-padding pass-strip">
+                  <img src="<%= strip %>" alt="Strip Image" />
+                  <div class="pass-title">
+                    <h3><%= eventName %></h3>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <div class="row pt-2">
+                  <div class="col-lg-6 col-md-6 col-6 text-left">
+                    <span class="pass-label">VENUE</span><br />
+                    <span class="pass-value"><%= place %></span>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-6 text-right">
+                    <span class="pass-label">DATE</span><br />
+                    <span class="pass-value"><%= date %></span>
+                  </div>
+                </div>
+
+                <div class="row pt-2">
+                  <div class="col-lg-4 col-md-4 col-4 text-left">
+                    <span class="pass-label">For</span><br />
+                    <span class="pass-value"><%= user %></span>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-4 text-center">
+                    <span class="pass-label">GATE</span><br />
+                    <span class="pass-value"><%= gate %></span>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-4 text-right">
+                    <span class="pass-label">SEAT</span><br />
+                    <span class="pass-value"><%= seat %></span>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+                  <div class="call-to-action">
+                    <img
+                      class="qr-code"
+                      src="<%= qrcode %>"
+                    />
+                    <span class="d-block text-center pt-3">
+                      This pass needs to be added to the Wallet app on your
+                      Phone<br />
+                      Please use the Camera or QR Code Reader control on your
+                      Phone to scan the code above
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

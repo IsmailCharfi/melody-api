@@ -1,0 +1,53 @@
+{
+  "organizationName": "Melody",
+  "description": "Please arrive at the venue at least 30 minutes before the event starts. This digital ticket serves as your entry pass. Make sure to have it ready on your mobile device for quick access to the event.",
+  "passTypeIdentifier": "me.charfi.melody.eventticket",
+  "teamIdentifier": "me.charfi.melody",
+  "backgroundColor": "rgb(142,209,252)",
+  "foregroundColor": "rgb(0,0,0)",
+  "labelColor": "rgb(0,0,0)",
+  "logoText": "Music Festival Ticket",
+  "formatVersion": 1,
+  "eventTicket": {
+    "headerFields": [],
+    "auxiliaryFields": [
+      {
+        "key": "user",
+        "value": "",
+        "label": "For"
+      },
+      {
+        "key": "gate",
+        "label": "Gate",
+        "value": "",
+        "textAlignment": "PKTextAlignmentCenter"
+      },
+      {
+        "key": "seat",
+        "value": "",
+        "label": "Seat",
+        "textAlignment": "PKTextAlignmentRight"
+      }
+    ],
+    "primaryFields": [
+      {
+        "key": "eventName",
+        "value": ""
+      }
+    ],
+    "secondaryFields": [
+      {
+        "value": "",
+        "key": "place",
+        "label": "Venue"
+      },
+      {
+        "key": "date",
+        "value": "",
+        "label": "Date",
+        "textAlignment": "PKTextAlignmentRight"
+      }
+    ],
+    "backFields": []
+  }
+}
