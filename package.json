@@ -44,7 +44,7 @@
     "passkit-generator": "^3.1.11",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
-    "puppeteer": "^21.5.0",
+    "puppeteer": "^21.5.2",
     "qrcode": "^1.5.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
