@@ -50,7 +50,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "slugger": "^1.0.1",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.18"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
