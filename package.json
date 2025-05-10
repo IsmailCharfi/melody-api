@@ -35,7 +35,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "crypto": "^1.0.1",
-    "date-fns": "^2.30.0",
+    "date-fns": "^3.0.0",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "fs": "0.0.1-security",
@@ -50,7 +50,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "slugger": "^1.0.1",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.18"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
